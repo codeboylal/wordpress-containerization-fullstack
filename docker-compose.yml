@@ -2,7 +2,7 @@
 version: '3.8' 
 
 services:
-  # Database | MySql
+  # Database | MySQL
   db:
     image: mysql:8.0.27
     container_name: wp_db_container
@@ -51,8 +51,7 @@ services:
       - ./wp_content:/var/www/html/wp-content
       - ./setup.sh:/usr/local/bin/setup.sh
     entrypoint: ["/bin/bash", "/usr/local/bin/setup.sh"]
-    command: ["apache2-forground"]
-
+    command: ["apache2-foreground"]  # Fixed typo from 'apache2-forground' to 'apache2-foreground'
     networks:
       - wp_network
 
@@ -60,9 +59,3 @@ services:
 networks:
   wp_network:
     driver: bridge
-
-
-
-
-
-
