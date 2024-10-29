@@ -47,7 +47,12 @@ services:
       WORDPRESS_HOME: ${WORDPRESS_HOME}
       WORDPRESS_SITEURL: ${WORDPRESS_SITEURL}
     volumes:
+      - ./db_data:/var/www/html
       - ./wp_content:/var/www/html/wp-content
+      - ./setup.sh:/usr/local/bin/setup.sh
+    entrypoint: ["/bin/bash", "/usr/local/bin/setup.sh"]
+    command: ["apache2-forground"]
+
     networks:
       - wp_network
 
